@@ -98,7 +98,7 @@ const getAllMovie = async (req, res, next) => {
   }
 
   if (!movies) {
-    return res.status(500).json({ message: "Request failed" });
+    return res.status(500).json({ message: "Error fetching movies" });
   }
   return res.status(200).json({ movies });
 };
