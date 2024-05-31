@@ -1,0 +1,9 @@
+# Ignore node_modules directory
+node_modules/
+
+# Other potential entries
+.env
+dist/
+build/
+coverage/
+ 
