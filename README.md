@@ -41,6 +41,4 @@ Before using the Movie Booking Application, make sure you have the following req
 6. Admins can log in, add new movies, and manage existing movies.
 7. Ensure the security of the application to protect user data and admin privileges.
 8. Monitor and maintain the application to provide a seamless user experience.
-
-## Support and Feedback
-If you encounter any issues, have suggestions for improvements, or need assistance with the React ToDoApp, please feel free to reach out to us at abyjoseofficial@gmail.com.
+ 
