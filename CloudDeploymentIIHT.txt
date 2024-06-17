@@ -1,0 +1,41 @@
+- > Backend Deployment :
+
+Created the Dockerfile and docker-compose.yml file to configure the docker in my application.
+Then Built the Docker Image using : 
+docker build -t moviebookingapp_backend:latest .
+
+Created a new Repository in the Amazon ECR(moviebookingapp_backend)
+Installed and used the AWS CLI to authenticate Docker to my Amazon ECR registry using :
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 475162412622.dkr.ecr.us-east-1.amazonaws.com
+
+Tagged my Docker Image and Push the Image to ECR :
+docker tag moviebookingapp_backend:latest 475162412622.dkr.ecr.us-east-1.amazonaws.com/moviebookingapp_backend:latest
+Pushed the Image to ECR :
+docker push 475162412622.dkr.ecr.us-east-1.amazonaws.com/moviebookingapp_backend:latest
+
+
+Deployed the Image to Amazon ECS from ECR :
+Created an ECS Cluster(moviebookingapp-cluster)
+Created a Task Definition:
+	Select the launch type (e.g., Fargate).
+	Define the container settings:
+	Image: 475162412622.dkr.ecr.us-east-1.amazonaws.com/moviebookingapp_backend:latest
+	Port mappings: Container port 5000
+
+Then Created a new service using the task definition created in the previous step.
+Choose the cluster.
+Configure the service settings (number of tasks, etc.).
+
+
+Updated the Security Groups and Load Balancers to allow allow inbound traffic on port 5000 
+Configure the load balancer to route traffic to the ECS service.
+
+
+-> Frontend Deployment :
+
+Created a build of my Frontend App(React) by using : npm run build
+Created an AWS S3 Bucket
+Deployed this build folder into the Bucket
+Enabled inbound/outbound traffic to this bucket from my port
+Enabled Static Web Hosting in the bucket to host the frontend from AWS.
+
